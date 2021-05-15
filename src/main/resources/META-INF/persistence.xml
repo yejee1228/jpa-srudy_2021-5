@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.2">
+    <persistence-unit name= "hello">
+        <properties>
+            <!-- 필수 속성 -->
+            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver"/>
+            <property name="javax.persistence.jdbc.user" value="sa"/>
+            <property name="javax.persistence.jdbc.password" value=""/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:h2:~/test"/>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/> <!--h2의 sql 문법에 맞춰줌-->
+
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
+            <property name="hibernate.use_sql_comments" value="true"/>
+
+            <!--데이터베이스 스키마 자동생성하기-->
+            <property name="hibernate.hbm2ddl.auto" value="create"/> <!--기존 테이블 삭제 후 다시 생성-->
+            <!--<property name="hibernate.hbm2ddl.auto" value="create-drop"/>--> <!--create와 같지만 종료 시점에 테이블 drop-->
+            <!--<property name="hibernate.hbm2ddl.auto" value="update"/>--> <!--변경분만 반영 운영 DB에는 사용하면 안됨.-->
+            <!--<property name="hibernate.hbm2ddl.auto" value="validate"/>--> <!--엔티티와 테이블이 정상 매핑되었는지만 확인-->
+            <!--<property name="hibernate.hbm2ddl.auto" value="none"/>--> <!--사용하지 않음-->
+            <!--운영장비에는 절대 create, create-drop, update 사용하면 안된다. 개발초기 단계는 create, update / 테스트 서버는 update, validate / 스테이징과 운영 서버는 validate , none-->
+
+        </properties>
+    </persistence-unit>
+
+</persistence>
